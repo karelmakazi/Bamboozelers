@@ -1,28 +1,29 @@
-# A starter webpack project for React
+# Bamboozelers
 
-This is a starter project that uses webpack to transpile and bundle ES6 React code. To use, consider these steps:
+- What will the bamboozelers buid for this week Group Project?
 
-* Fork this repo
-* Rename your repo according to the app you're building
 
-```sh
-git clone https://github.com/[your-account]/[your-app].git
-cd [your-app] && npm i
-```
+# MVP
 
-To start the development server with a watcher that rebuilds your code, run `npm run dev`. The assets built by webpack are placed in `server/public`. This folder is defined as a static folder in an Express.js server that can be started with `npm run server`.
+- [x] Initialise the repo
+- [x] Create the Dev branch 
+- [x] Set MVP and stretch and update on ReadMe file
+- [x] Find the right Api for the project
+- [ ] Set all the components required
+- [ ] Break into assigned roles
+- [ ] Check the API work as intended
+- [ ] Get one component to work (category)
+- [ ] Do 1030 standup and merge
+- [ ] Do 1130 standup and merge 
+- [ ] Do 1230 standup and merge
+- [ ] Do 130 stand up and merge 
+- [ ] Do 230 stand up and merge
+- [ ] Update the design with CSS
 
-Additional components should be placed in `client/components`.
+# Stretch
+- [ ] Add categories
+- [ ] Create and add a category we create ourselves
+- [ ] Add scores and leaderboard on the side for each category
 
-## Separate client/server
 
-The boilerplate is also set up to host the client using `webpack-dev-server` with hot module reloading etc. To use this method, in one terminal run:
-```sh
-npm run client
-```
-and in the other:
-```sh
-npm run server
-```
-The client will be available on http://localhost:8080 and the server on http://localhost:3000. Note that you will still need to manage CORS between the two, as they are on different ports.
 
