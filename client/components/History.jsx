@@ -29,6 +29,7 @@ class History extends Component {
 
   render() {
     return (
+
       <div>
         <h1>True or False?</h1>
         <h2>History</h2>

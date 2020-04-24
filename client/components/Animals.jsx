@@ -47,7 +47,7 @@ class Animals extends React.Component {
       score: startScore,
       backgroundColor: buttonColor
     })
-    }
+   }
 
   
 
@@ -63,10 +63,12 @@ class Animals extends React.Component {
             return (
               <div key={index} >
                  {result.question} <br />
+
                   <button 
                     value='True' 
                     onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True
                   </button>
+                
                   <button value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
               </div>
             )
@@ -79,4 +81,3 @@ class Animals extends React.Component {
 }
 
 export default Animals
-
