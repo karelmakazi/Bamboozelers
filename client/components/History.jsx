@@ -27,17 +27,11 @@ class History extends Component {
       })
   }
 
-  // resultHandler(count) {
-  //   this.state.score += count
-  //   console.log(this.state.score)
-  // }
-
   render() {
     return (
       <div>
         <h1>True or False?</h1>
         <h2>History</h2>
-        {/* <h3>Your Score: {this.state.count}</h3> */}
         {
           this.state.results.map((result, index) => {
             return (
@@ -51,7 +45,7 @@ class History extends Component {
           })
         }
         <Link to='/'>Home</Link>
-      </div >
+      </div>
     )
   }
 }

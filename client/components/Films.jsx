@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
-import Questions from './Questions'
 
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=boolean'
 
@@ -11,7 +10,8 @@ class Film extends React.Component {
 
     this.state = {
       score: 0,
-      results: []
+      results: [],
+      backgroundColor: 'white'
     }
   }
 
@@ -26,17 +26,31 @@ class Film extends React.Component {
       })
   }
 
-  // resultHandler(count) {
-  //   this.state.score += count
-  //   console.log(this.state.score)
-  // }
+  quizAnswerHandler(answer) {
+    let response = event.target.value
+    let startScore = this.state.score
+    
+    var buttonColor
+    
+    if (response === answer) {
+      startScore ++
+      buttonColor = "green"
+    } else {
+      buttonColor = "red"
+      }
+      
+    this.setState({
+      score: startScore,
+      backgroundColor: buttonColor
+      })
+    }
 
   render() {
     return (
       <div>
         <h1>True or False?</h1>
         <h2>Film</h2>
-        {/* <h3>Your Score: {this.state.count}</h3> */}
+        <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {this.state.score}</h3>
         {
           this.state.results.map((result, index) => {
             return (
