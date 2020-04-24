@@ -5,7 +5,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <>
-        <h3>BAMBOOZLE</h3>
+        <h1>BAMBOOZLE</h1>
 
         <Link to='/Animals'>
           <button className='categoryAnimals'>Animals</button>
@@ -13,11 +13,11 @@ export default class Home extends React.Component {
         <Link to='/Films'>
           <button className='categoryFilms'>Films</button>
         </Link>
-        <Link to='/Sports'>
-          <button className='categorySports'>Sports</button>
+        <Link to='/Computers'>
+          <button className='categoryComputers'>Computers</button>
         </Link>
-        <Link to='/Comics'>
-          <button className='categoryComics'>Comics</button>
+        <Link to='/History'>
+          <button className='categoryHistory'>History</button>
         </Link>
       </>
     )

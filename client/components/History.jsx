@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import request from 'superagent'
 import Questions from './Questions'
+import request from 'superagent'
 
-const apiUrl = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=boolean'
+const apiUrl = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=boolean'
 
-class Film extends React.Component {
+
+class History extends Component {
   constructor(props) {
     super(props)
 
@@ -35,13 +36,14 @@ class Film extends React.Component {
     return (
       <div>
         <h1>True or False?</h1>
-        <h2>Film</h2>
+        <h2>History</h2>
         {/* <h3>Your Score: {this.state.count}</h3> */}
         {
           this.state.results.map((result, index) => {
             return (
               <div key={index} >
-                 {result.question} <br />
+                 {result.question}
+                  <br />
                   <button value='true' onClick={() => this.quizAnswerHandler}>True</button>
                   <button value='false' onClick={() => this.quizAnswerHandler}>False</button>
               </div>
@@ -49,9 +51,9 @@ class Film extends React.Component {
           })
         }
         <Link to='/'>Home</Link>
-      </div>
-    );
+      </div >
+    )
   }
 }
 
-export default Film
+export default History;

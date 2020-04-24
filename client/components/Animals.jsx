@@ -18,8 +18,7 @@ class Animals extends React.Component {
     }
   }
 
-
-
+  
   componentDidMount() {
     request.get(apiUrl)
       .then(res => {
@@ -31,23 +30,36 @@ class Animals extends React.Component {
       })
   }
 
-  resultHandler(count) {
-    this.state.score += count
-    console.log(this.state.score)
-  }
+
+  quizAnswerHandler(answer) {
+    let response = event.target.value
+    let
+   
+    if (response === answer) {
+        this.setState({
+          score: this.state.score + 1
+        })
+        // this.state.score = this.state.score + 1
+      } 
+      console.log(this.state.score)
+    }
+
+  
 
   render() {
     return (
       <div>
         <h1>True or False?</h1>
         <h2>Animals</h2>
-        <h3>Your Score: {this.state.count}</h3>
+        <h3>Your Score: {this.state.score}</h3>
         {
           this.state.results.map((result, index) => {
             return (
-              <p key={index} >
-                <Questions question={result.question} correctAnswer={result.correct_answer} />
-              </p>
+              <div key={index} >
+                 {result.question} <br />
+                  <button value='true' onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True</button>
+                  <button value='false' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
+              </div>
             )
           })
         }

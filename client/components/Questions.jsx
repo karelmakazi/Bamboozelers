@@ -1,25 +1,42 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import resultHandler from './Animals'
 
 class Questions extends React.Component {
- 
-  quizAnswerHandler(answer) {
+  constructor(props) {
+    super(props) 
+
+    this.state = {
+      correct_answer: this.props.correct_answer,
+      score: 0
+    }
+  }
+
+  quizAnswerHandler(event) {
     let count = 0
-    if (answer === this.props.correct_answer) {
-      count++
+    let answer = event.target.value
+    
+    if (answer === 'true') {
+        count = 1
+    } else {
+      count= 0
     }
     
-    resultHandler(count) 
+    this.setState = {
+      score: count
+    }
+    // resultHandler(count)
   }
 
   render() {
     const question = this.props.question
     return (
       <div className="questionWrapper">
+        <h2>Score: {this.state.score}</h2>
         {question}
         <br />
-        <button onClick={() => quizAnswerHandler()}>True</button>
-        <button onClick={() => quizAnswerHandler()}>False</button>
+        <button value='true' onClick={() => this.quizAnswerHandler}>True</button>
+        <button value='false' onClick={() => this.quizAnswerHandler}>False</button>
 
       </div>
     );
