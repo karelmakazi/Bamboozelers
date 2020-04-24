@@ -2,19 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class Questions extends React.Component {
-  render() {
-    return (
-      <>
-        <div>
-          <h1>Questions</h1>
+ 
+  quizAnswerHandler(answer) {
+    let count = 0
+    if (answer === this.props.correct_answer) {
+      count++
+    }
+    
+    resultHandler(count) 
+  }
 
-        </div>
-        <div className="questionWrapper">
-          <ul>
-            <li>question 1</li>
-          </ul>
-        </div>
-      </>
+  render() {
+    const question = this.props.question
+    return (
+      <div className="questionWrapper">
+        {question}
+        <br />
+        <button onClick={() => quizAnswerHandler()}>True</button>
+        <button onClick={() => quizAnswerHandler()}>False</button>
+
+      </div>
     );
   }
 }

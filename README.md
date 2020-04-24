@@ -9,11 +9,11 @@
 - [x] Create the Dev branch 
 - [x] Set MVP and stretch and update on ReadMe file
 - [x] Find the right Api for the project
-- [ ] Set all the components required
+- [x] Set all the components required
 - [ ] Break into assigned roles
 - [ ] Check the API work as intended
 - [ ] Get one component to work (category)
-- [ ] Do 1030 standup and merge
+- [x] Do 1030 standup and merge
 - [ ] Do 1130 standup and merge 
 - [ ] Do 1230 standup and merge
 - [ ] Do 130 stand up and merge 
