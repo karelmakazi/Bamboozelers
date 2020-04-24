@@ -27,33 +27,26 @@ class History extends Component {
       })
   }
 
-  // resultHandler(count) {
-  //   this.state.score += count
-  //   console.log(this.state.score)
-  // }
-
   render() {
     return (
-      <div className='divHistory'>
-        <div classname='questionsWrapper'>
-          <h2>History</h2>
-          {/* <h3>Your Score: {this.state.count}</h3> */}
-          <h1>True or False?</h1>
-          {
-            this.state.results.map((result, index) => {
-              return (
-                <div key={index} >
-                  {result.question}
+
+      <div>
+        <h1>True or False?</h1>
+        <h2>History</h2>
+        {
+          this.state.results.map((result, index) => {
+            return (
+              <div key={index} >
+                 {result.question}
                   <br />
                   <button value='true' onClick={() => this.quizAnswerHandler}>True</button>
                   <button value='false' onClick={() => this.quizAnswerHandler}>False</button>
-                </div>
-              )
-            })
-          }
-          <Link to='/'>Home</Link>
-        </div>
-      </div >
+              </div>
+            )
+          })
+        }
+        <Link to='/'>Home</Link>
+      </div>
     )
   }
 }

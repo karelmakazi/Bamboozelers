@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import request from 'superagent'
 
-import Questions from './Questions'
-
-
 
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
 
@@ -14,11 +11,13 @@ class Animals extends React.Component {
 
     this.state = {
       score: 0,
-      results: []
+      results: [],
+      backgroundColor: 'white'
     }
   }
 
   
+
   componentDidMount() {
     request.get(apiUrl)
       .then(res => {
@@ -34,32 +33,42 @@ class Animals extends React.Component {
   quizAnswerHandler(answer) {
     let response = event.target.value
     let startScore = this.state.score
-   
+    
+    var buttonColor
+    
     if (response === answer) {
       startScore ++
-      
-    }
+      buttonColor = "green"
+    } else {
+      buttonColor = "red"
+      }
       
     this.setState({
-      score: startScore
+      score: startScore,
+      backgroundColor: buttonColor
     })
-      console.log(this.state.score)
-    }
+   }
 
   
 
   render() {
+
     return (
       <div>
         <h1>True or False?</h1>
         <h2>Animals</h2>
-        <h3>Your Score: {this.state.score}</h3>
+         <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {this.state.score}</h3>
         {
           this.state.results.map((result, index) => {
             return (
               <div key={index} >
                  {result.question} <br />
-                  <button value='True' onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True</button>
+
+                  <button 
+                    value='True' 
+                    onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True
+                  </button>
+                
                   <button value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
               </div>
             )
