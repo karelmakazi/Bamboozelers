@@ -33,14 +33,16 @@ class Animals extends React.Component {
 
   quizAnswerHandler(answer) {
     let response = event.target.value
-    let
+    let startScore = this.state.score
    
     if (response === answer) {
-        this.setState({
-          score: this.state.score + 1
-        })
-        // this.state.score = this.state.score + 1
-      } 
+      startScore ++
+      
+    }
+      
+    this.setState({
+      score: startScore
+    })
       console.log(this.state.score)
     }
 
@@ -57,8 +59,8 @@ class Animals extends React.Component {
             return (
               <div key={index} >
                  {result.question} <br />
-                  <button value='true' onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True</button>
-                  <button value='false' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
+                  <button value='True' onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True</button>
+                  <button value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
               </div>
             )
           })
@@ -70,4 +72,3 @@ class Animals extends React.Component {
 }
 
 export default Animals
-

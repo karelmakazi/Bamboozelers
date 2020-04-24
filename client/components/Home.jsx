@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 export default class Home extends React.Component {
   render() {
     return (
-      <>
+      <div className="homeWrapper">
         <h1>BAMBOOZLE</h1>
-
+        <div className="buttonWrapper">
+          
         <Link to='/Animals'>
           <button className='categoryAnimals'>Animals</button>
         </Link>
@@ -19,7 +20,8 @@ export default class Home extends React.Component {
         <Link to='/History'>
           <button className='categoryHistory'>History</button>
         </Link>
-      </>
+        </div>
+      </div>
     )
   }
 }
