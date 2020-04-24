@@ -7,19 +7,23 @@ export default class Home extends React.Component {
       <div className="homeWrapper">
         <h1>BAMBOOZLE</h1>
         <div className="buttonWrapper">
-          
+          <p>Select a category</p>
+        <div className="buttons">
         <Link to='/Animals'>
           <button className='categoryAnimals'>Animals</button>
         </Link>
         <Link to='/Films'>
           <button className='categoryFilms'>Films</button>
         </Link>
+        </div>  
+        <div className="buttons">
         <Link to='/Computers'>
           <button className='categoryComputers'>Computers</button>
         </Link>
         <Link to='/History'>
           <button className='categoryHistory'>History</button>
         </Link>
+        </div>
         </div>
       </div>
     )
