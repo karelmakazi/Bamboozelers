@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Questions from './Questions'
 import request from 'superagent'
 
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=boolean'
