@@ -18,12 +18,25 @@ function Home (props) {
       <h1>BAMBOOZLE</h1>
       <div className="buttonWrapper">
         <p>Select a category</p>
-      <div className="buttons">
-      <Link to='#'>
-        <button className='categoryAnimals' value='Animals' onClick={() => eventHandler(dispatch)}>
-          Animals
-        </button>
-      </Link>
+        <div className="buttons">
+        <Link to='#'><button className='categoryAnimals' value='Animals' 
+          onClick={() => eventHandler(dispatch)}> Animals </button>
+        </Link>
+        <Link to='#'><button className='categoryFilms' value='Films' 
+          onClick={() => eventHandler(dispatch)}> Films </button>
+        </Link>
+        <Link to='#'><button className='categoryMythology' value='Mythology' 
+          onClick={() => eventHandler(dispatch)}> Mythology </button>
+        </Link>
+        <Link to='#'><button className='categoryHistory' value='History' 
+          onClick={() => eventHandler(dispatch)}> History </button>
+        </Link>
+      </div>
+
+
+
+
+
       {/* <Link to='/Films'>
         <button className='categoryFilms'>Films</button>
       </Link>
@@ -35,7 +48,7 @@ function Home (props) {
       <Link to='/History'>
         <button className='categoryHistory'>History</button>
       </Link> */}
-      </div>
+      
       </div>
     </div>
   )
