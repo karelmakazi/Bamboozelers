@@ -15,7 +15,7 @@ const store = createStore(reducers, composeEnhancers(
 
 document.addEventListener('DOMContentLoaded', () => {
   render(
-    <Provider>
+    <Provider store={store}>
       <Router>
         <App />
       </Router>
