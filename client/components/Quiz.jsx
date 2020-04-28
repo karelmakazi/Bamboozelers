@@ -2,28 +2,33 @@ import React from 'react'
 import request from 'superagent'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Question from './Question'
 
+//SCORING
 
-const apiUrl = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
+var count = 0
+
+// export function questionResponseHandler(response){
+//   console.log('Response ' + response)
+//    count =+ response
+//    console.log('Now at ' + count)
+   
+// }
 
 
 class Quiz extends React.Component {
   constructor(props) {
     super(props)
-    
     this.state = {
-      score: 0,
+      score: count,
       results: [],
       backgroundColor: 'white'
     }
   }
-   
- 
 
   componentDidMount() { 
     const {categorySelected} = this.props
     const newAPI = this.apiConstructor(categorySelected)
-         
     request.get(newAPI)
       .then(res => {
         const results = res.body.results
@@ -55,7 +60,7 @@ class Quiz extends React.Component {
     }
   }
 
-  quizAnswerHandler(answer) {
+ quizAnswerHandler(answer) {
     let response = event.target.value
     let startScore = this.state.score
     
@@ -72,6 +77,13 @@ class Quiz extends React.Component {
       score: startScore,
       backgroundColor: buttonColor
     })
+   }
+
+   questionResponseHandler(response){
+     console.log('Response' + response);
+      count =+ response
+      console.log('New Count: ' + count);
+      
    }
 
    //CONDITIONAL FORMATTING
@@ -99,24 +111,20 @@ class Quiz extends React.Component {
       <div>
         <h2 style={{color: color}}> {categorySelected}</h2>
         <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {this.state.score}</h3>
+
         {
           this.state.results.map((result, index) => {
             return (
-              <div key={index} >
-                 {result.question} <br />
-                  <button 
-                    value='True' 
-                    onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True
-                  </button>
-                  <button 
-                    value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False
-                  </button>
+              <div key={index}>
+                <Question question={result.question} correctAnswer={result.correct_answer} 
+                  color={color} id={index} parentHandler={this.questionResponseHandler}/>
               </div>
             )
           })
         }
+
         <Link to='/'>Home</Link>
-      </div >
+      </div>
     )
   }
 }
