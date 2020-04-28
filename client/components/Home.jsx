@@ -6,7 +6,6 @@ import {setQuizDetails} from '../actions'
 
 function eventHandler(dispatch){
   let selectedCat = event.target.value
-  console.log(selectedCat)
   dispatch (setQuizDetails(selectedCat))
 }
 
@@ -19,16 +18,16 @@ function Home (props) {
       <div className="buttonWrapper">
         <p>Select a category</p>
         <div className="buttons">
-          <Link to='/Quiz'><button className='categoryAnimals' value='animals' 
+          <Link to='/Quiz'><button className='categoryAnimals' value='Animals' 
             onClick={() => eventHandler(dispatch)}> Animals </button>
           </Link>
-          <Link to='/Quiz'><button className='categoryFilms' value='films' 
+          <Link to='/Quiz'><button className='categoryFilms' value='Films' 
             onClick={() => eventHandler(dispatch)}> Films </button>
           </Link>
-          <Link to='/Quiz'><button className='categoryMythology' value='mythology' 
-            onClick={() => eventHandler(dispatch)}> Mythology </button>
+          <Link to='/Quiz'><button className='categoryScience' value='Science' 
+            onClick={() => eventHandler(dispatch)}> Science </button>
           </Link>
-          <Link to='/Quiz'><button className='categoryHistory' value='history' 
+          <Link to='/Quiz'><button className='categoryHistory' value='History' 
             onClick={() => eventHandler(dispatch)}> History </button>
           </Link>
         </div>

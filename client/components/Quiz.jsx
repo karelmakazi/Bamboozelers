@@ -6,28 +6,54 @@ import { connect } from 'react-redux'
 
 const apiUrl = 'https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean'
 
+
 class Quiz extends React.Component {
   constructor(props) {
     super(props)
-
+    
     this.state = {
       score: 0,
       results: [],
       backgroundColor: 'white'
     }
   }
+   
+ 
 
-  componentDidMount() {
-    request.get(apiUrl)
+  componentDidMount() { 
+    const {categorySelected} = this.props
+    const newAPI = this.apiConstructor(categorySelected)
+         
+    request.get(newAPI)
       .then(res => {
         const results = res.body.results
-        console.log('results: ', res.body.results)
         this.setState({
           results: results
         })
       })
   }
 
+  //API CONSTRUCTORS
+  apiConstructor(category){
+    var number = this.apiNumber(category)
+    return 'https://opentdb.com/api.php?amount=10&category=' + number + 
+            '&difficulty=easy&type=boolean'
+  }
+
+  apiNumber(category){
+    switch (category){
+      case 'Animals':
+        return '27'
+      case 'Films':
+        return '11'
+      case 'Science':
+        return '17'
+      case 'History':
+        return '23'
+      default:
+        return 'black'
+    }
+  }
 
   quizAnswerHandler(answer) {
     let response = event.target.value
@@ -48,14 +74,14 @@ class Quiz extends React.Component {
     })
    }
 
-
+   //CONDITIONAL FORMATTING
    categoryFormatting(category){
       switch (category){
         case 'Animals':
           return 'orange'
         case 'Films':
           return 'orangered'
-        case 'Mythology':
+        case 'Science':
           return 'cornflowerblue'
         case 'History':
           return 'Purple'
@@ -63,14 +89,12 @@ class Quiz extends React.Component {
           return 'black'
       }
    }
-
-  
    
    render() {
      
     const {categorySelected} = this.props
     const color = this.categoryFormatting(categorySelected)
-
+    
     return (
       <div>
         <h2 style={{color: color}}> {categorySelected}</h2>
@@ -80,13 +104,13 @@ class Quiz extends React.Component {
             return (
               <div key={index} >
                  {result.question} <br />
-
                   <button 
                     value='True' 
                     onClick={()=> this.quizAnswerHandler(result.correct_answer)}>True
                   </button>
-                
-                  <button value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False</button>
+                  <button 
+                    value='False' onClick={() => this.quizAnswerHandler(result.correct_answer)}>False
+                  </button>
               </div>
             )
           })
