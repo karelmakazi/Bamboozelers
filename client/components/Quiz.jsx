@@ -20,7 +20,7 @@ class Quiz extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      score: count,
+      score: 0,
       results: [],
       backgroundColor: 'white'
     }
@@ -80,10 +80,7 @@ class Quiz extends React.Component {
    }
 
    questionResponseHandler(response){
-     console.log('Response' + response);
-      count =+ response
-      console.log('New Count: ' + count);
-      
+     console.log('Response from Question: ' + response);
    }
 
    //CONDITIONAL FORMATTING

@@ -1,32 +1,29 @@
 import React from 'react'
-// import { questionResponseHandler } from './Quiz'
 
-var resCode = 0
 
 class Question extends React.Component {
   
-  
   quizAnswerHandler(answer) {
-    if (answer === this.props.correct_answer) {
-      resCode++
-      console.log('Question Body: ' + resCode)
-      this.props.parentHandler(resCode)
-    }
+    let responseValue = event.target.value
+    let resCode = (responseValue === answer) ? 1 : 0
+    // console.log('Answer: ' + answer + ' Response: ' + responseValue + ' Your code: ' + resCode);
+    this.props.parentHandler(resCode)
   }
 
   render() {
     const question = this.props.question
+    const answer = this.props.correctAnswer
     const number = 'Q' + (this.props.id + 1) + '. '
     const color = this.props.color
-
+   
     return (
       <div className='questionContainer'>
         <div className='questionBody'>
           <span style={{color: color}}>{number}</span> {question}
         </div>
         <div className='questionAnswers'>
-          <button onClick={() => this.quizAnswerHandler()}>True</button>
-          <button onClick={() => this.quizAnswerHandler()}>False</button>
+          <button value={'True'} onClick={() => this.quizAnswerHandler(answer)}>True</button>
+          <button value={'False'} onClick={() => this.quizAnswerHandler(answer)}>False</button>
         </div>
       </div>
     )
