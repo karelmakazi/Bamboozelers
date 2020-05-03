@@ -8,14 +8,6 @@ import Question from './Question'
 
 var count = 0
 
-// export function questionResponseHandler(response){
-//   console.log('Response ' + response)
-//    count =+ response
-//    console.log('Now at ' + count)
-   
-// }
-
-
 class Quiz extends React.Component {
   constructor(props) {
     super(props)
@@ -24,6 +16,7 @@ class Quiz extends React.Component {
       results: [],
       backgroundColor: 'white'
     }
+    this.questionResponseHandler = this.questionResponseHandler.bind(this)
   }
 
   componentDidMount() { 
@@ -79,8 +72,15 @@ class Quiz extends React.Component {
     })
    }
 
-   questionResponseHandler(response){
-     console.log('Response from Question: ' + response);
+   //SCORING
+   questionResponseHandler(response, currentScore){
+     let nowScore = this.state.score
+     let newScore = nowScore + response
+
+     this.setState({
+      score: newScore,
+    })
+     
    }
 
    //CONDITIONAL FORMATTING
@@ -102,12 +102,13 @@ class Quiz extends React.Component {
    render() {
      
     const {categorySelected} = this.props
+    const currentScore = this.state.score
     const color = this.categoryFormatting(categorySelected)
     
     return (
       <div>
         <h2 style={{color: color}}> {categorySelected}</h2>
-        <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {this.state.score}</h3>
+        <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {currentScore}</h3>
 
         {
           this.state.results.map((result, index) => {

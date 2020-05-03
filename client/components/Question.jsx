@@ -1,12 +1,15 @@
 import React from 'react'
 
-
 class Question extends React.Component {
   
+  feedback = ''
+  feedbackColour ='white'
+
   quizAnswerHandler(answer) {
     let responseValue = event.target.value
     let resCode = (responseValue === answer) ? 1 : 0
-    // console.log('Answer: ' + answer + ' Response: ' + responseValue + ' Your code: ' + resCode);
+    this.feedback = (resCode === 1) ? 'CORRECT' : 'WRONG'
+    this.feedbackColour = (resCode === 1) ? 'green' : 'violet'
     this.props.parentHandler(resCode)
   }
 
@@ -15,6 +18,7 @@ class Question extends React.Component {
     const answer = this.props.correctAnswer
     const number = 'Q' + (this.props.id + 1) + '. '
     const color = this.props.color
+    let resultIndicator = this.feedback
    
     return (
       <div className='questionContainer'>
@@ -25,6 +29,9 @@ class Question extends React.Component {
           <button value={'True'} onClick={() => this.quizAnswerHandler(answer)}>True</button>
           <button value={'False'} onClick={() => this.quizAnswerHandler(answer)}>False</button>
         </div>
+        <div className='resultIndicator' style={{color:this.feedbackColour}}>
+          {resultIndicator}
+        </div>
       </div>
     )
   }
@@ -32,20 +39,3 @@ class Question extends React.Component {
 
 
 export default Question
-
-      // <>
-      //   <div>
-      // <div className="questionWrapper">
-      //   {question}
-      //   <br />
-      //   <button onClick={() => quizAnswerHandler()}>True</button>
-      //   <button onClick={() => quizAnswerHandler()}>False</button>
-
-      //   </div>
-      //   <div className="questionWrapper">
-      //     <ul>
-      //       <li>question 1</li>
-      //     </ul>
-      //   </div>
-      // </>
-      // </div>
