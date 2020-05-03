@@ -16,7 +16,7 @@ function Home (props) {
     <div className="homeWrapper">
       <h1>BAMBOOZLE</h1>
       <div className="buttonWrapper">
-        <p>Select a category</p>
+        <div>Select a category</div>
         <div className="buttons">
           <Link to='/Quiz'><button className='categoryAnimals' value='Animals' 
             onClick={() => eventHandler(dispatch)}> Animals </button>
@@ -32,6 +32,11 @@ function Home (props) {
           </Link>
         </div>
       </div>
+      <div className='nameInput'>
+        <label htmlFor='userName'>Name: </label>
+        <input id='userName' name='userName'/>
+      </div>
+
     </div>
   )
 }

@@ -1,17 +1,37 @@
 import React from 'react'
 
 class Question extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      answered: 0,
+    }
+  }
   
   feedback = ''
   feedbackColour ='white'
+  resCode = 3
+
+  // quizAnswerHandler(answer) {
+  //   let responseValue = event.target.value
+  //   let resCode = (responseValue === answer) ? 1 : 0
+  //   this.feedback = (resCode === 1) ? 'CORRECT' : 'WRONG'
+  //   this.feedbackColour = (resCode === 1) ? 'green' : 'violet'
+  //   this.props.parentHandler(resCode)
+  // }
 
   quizAnswerHandler(answer) {
-    let responseValue = event.target.value
-    let resCode = (responseValue === answer) ? 1 : 0
-    this.feedback = (resCode === 1) ? 'CORRECT' : 'WRONG'
-    this.feedbackColour = (resCode === 1) ? 'green' : 'violet'
-    this.props.parentHandler(resCode)
-  }
+    if (this.state.answered === 0) {
+      let responseValue = event.target.value
+      let resCode = (responseValue === answer) ? 1 : 0
+      this.feedback = (resCode === 1) ? 'CORRECT' : 'WRONG'
+      this.feedbackColour = (resCode === 1) ? 'green' : 'violet'
+      this.props.parentHandler(resCode)
+      this.setState({ answered: 1 })
+    } else {
+      console.log('already answered that')
+      }
+    } 
 
   render() {
     const question = this.props.question
