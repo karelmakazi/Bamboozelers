@@ -104,9 +104,13 @@ class Quiz extends React.Component {
     const {categorySelected} = this.props
     const currentScore = this.state.score
     const color = this.categoryFormatting(categorySelected)
+    const scoreBody = 'HIGHSCORE: ' + 'someName ' + ' 8'
     
     return (
       <div>
+        <div className='scoreIndicator'>
+          {scoreBody}
+        </div>
         <h2 style={{color: color}}> {categorySelected}</h2>
         <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {currentScore}</h3>
 
