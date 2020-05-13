@@ -1,8 +1,9 @@
 import React from 'react'
-import request from 'superagent'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { addName } from '../api'
+import request from 'superagent'
 
 //SCORING
 
@@ -14,21 +15,37 @@ class Quiz extends React.Component {
     this.state = {
       score: 0,
       results: [],
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      name:'',
+      previous: ''
     }
+
     this.questionResponseHandler = this.questionResponseHandler.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
   }
 
   componentDidMount() { 
     const {categorySelected} = this.props
-    const newAPI = this.apiConstructor(categorySelected)
-    request.get(newAPI)
-      .then(res => {
-        const results = res.body.results
-        this.setState({
-          results: results
-        })
+
+    //QUIZ CONTENT (turned off due to api overload on their)
+    // const newAPI = this.apiConstructor(categorySelected)
+    // request.get(newAPI)
+    //   .then(res => {
+    //     const results = res.body.results
+    //     this.setState({
+    //       results: results
+    //     })
+    //   })
+
+    //CATEGORY PREVIOUS ATTEMPT  
+    request.get('/api/v1/score')
+    .then(res => {
+      this.setState({
+        previous: res.body[0].previous
       })
+    })
   }
 
   //API CONSTRUCTORS
@@ -53,27 +70,20 @@ class Quiz extends React.Component {
     }
   }
 
- quizAnswerHandler(answer) {
-    let response = event.target.value
-    let startScore = this.state.score
-    
-    var buttonColor
-    
-    if (response === answer) {
-      startScore ++
-      buttonColor = "green"
-    } else {
-      buttonColor = "red"
-      }
-      
+  //EVENT HANDLERS
+  handleChange(event){
     this.setState({
-      score: startScore,
-      backgroundColor: buttonColor
-    })
+      [event.target.name]:event.target.value
+     })
    }
 
+  handleSubmit(event){
+    event.preventDefault()
+    addName(this.state)
+  }
+
    //SCORING
-   questionResponseHandler(response, currentScore){
+  questionResponseHandler(response, currentScore){
      let nowScore = this.state.score
      let newScore = nowScore + response
 
@@ -84,7 +94,7 @@ class Quiz extends React.Component {
    }
 
    //CONDITIONAL FORMATTING
-   categoryFormatting(category){
+  categoryFormatting(category){
       switch (category){
         case 'Animals':
           return 'orange'
@@ -103,8 +113,9 @@ class Quiz extends React.Component {
      
     const {categorySelected} = this.props
     const currentScore = this.state.score
+    const previousScore = this.state.previous
     const color = this.categoryFormatting(categorySelected)
-    const scoreBody = 'HIGHSCORE: ' + 'someName ' + ' 8'
+    const scoreBody = 'Previous Score: ' + previousScore
     
     return (
       <div>
@@ -125,6 +136,13 @@ class Quiz extends React.Component {
           })
         }
 
+        <div className='nameEntry'>
+          <label htmlFor='userName'>Name: </label>
+          <input id='userName' value={this.state.name} name='name' onChange={this.handleChange} />
+            <div onClick={this.handleSubmit}>
+              <button className='saveName'> Save </button>
+            </div>
+        </div>
         <Link to='/'>Home</Link>
       </div>
     )

@@ -16,8 +16,3 @@ const App = () => {
 }
 
 export default App
-
-      // <Route exact path='/Computers' component={Computers} />
-      // <Route exact path='/History' component={History} />
-      // <Route exact path='/Films' component={Films} />
-      // <Route exact path='/Leaderboard' component={Leaderboard} />
