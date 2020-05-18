@@ -1,29 +1,16 @@
 # Bamboozelers
 
-- What will the bamboozelers buid for this week Group Project?
+A quiz app that uses an expternal API to get quiz questions and then presents it to the user in a dynamically formatted style. In its current form it is limited to a single player only but I intend on expanding it to allow for multiple players through the rentention of names and high scores.
 
+# Instructions
+Prior to starting run: npm install 
+Starting the game: npm run dev
 
-# MVP
-
-- [x] Initialise the repo
-- [x] Create the Dev branch 
-- [x] Set MVP and stretch and update on ReadMe file
-- [x] Find the right Api for the project
-- [x] Set all the components required
-- [ ] Break into assigned roles
-- [ ] Check the API work as intended
-- [ ] Get one component to work (category)
-- [x] Do 1030 standup and merge
-- [ ] Do 1130 standup and merge 
-- [ ] Do 1230 standup and merge
-- [ ] Do 130 stand up and merge 
-- [ ] Do 230 stand up and merge
-- [ ] Update the design with CSS
-
-# Stretch
-- [ ] Add categories
-- [ ] Create and add a category we create ourselves
-- [ ] Add scores and leaderboard on the side for each category
+# Planned expansions
+- Currently experiencing API service issues, consider switching APIs to something a little more reliable. 
+- Allow the saving and displaying of highscores for each category along with the user name.
+- Write a comprehensive test suite.
+- Apply strict CSS taht can be manipulated by component data
 
 
 
