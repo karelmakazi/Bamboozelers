@@ -10,7 +10,7 @@ Starting the game: npm run dev
 - Currently experiencing API service issues, consider switching APIs to something a little more reliable. 
 - Allow the saving and displaying of highscores for each category along with the user name.
 - Write a comprehensive test suite.
-- Apply strict CSS taht can be manipulated by component data
+- Apply strict CSS that can be manipulated by component data
 
 
 
