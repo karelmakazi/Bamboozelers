@@ -29,15 +29,15 @@ class Quiz extends React.Component {
   componentDidMount() { 
     const {categorySelected} = this.props
 
-    //QUIZ CONTENT (turned off due to api overload on their)
-    // const newAPI = this.apiConstructor(categorySelected)
-    // request.get(newAPI)
-    //   .then(res => {
-    //     const results = res.body.results
-    //     this.setState({
-    //       results: results
-    //     })
-    //   })
+    //QUIZ CONTENT
+    const newAPI = this.apiConstructor(categorySelected)
+    request.get(newAPI)
+      .then(res => {
+        const results = res.body.results
+        this.setState({
+          results: results
+        })
+      })
 
     //CATEGORY PREVIOUS ATTEMPT  
     request.get('/api/v1/score')
@@ -116,10 +116,7 @@ class Quiz extends React.Component {
     const previousScore = this.state.previous
     const color = this.categoryFormatting(categorySelected)
     const scoreBody = 'Previous Score: ' + previousScore
-    let linkDirection = (previousScore >= currentScore) ? '/' : '/Leaderboard'
-    console.log('LINK: ' + linkDirection)
-    
-    
+      
     return (
       <div>
         <div className='scoreIndicator'>
@@ -147,6 +144,7 @@ class Quiz extends React.Component {
             </div>
         </div>
         <Link to='/'>Home</Link>
+        <Link to='/Score' oldscore={previousScore} newscore={currentScore}>Proceed</Link>
       </div>
     )
   }

@@ -11,6 +11,3 @@ Starting the game: npm run dev
 - Allow the saving and displaying of highscores for each category along with the user name.
 - Write a comprehensive test suite.
 - Apply strict CSS that can be manipulated by component data
-
-hey
-
