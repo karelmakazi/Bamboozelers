@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react';
 
-class Leaderboard extends React.Component {
+
+
+class Leaderboard extends Component {
   render() {
     return (
       <div>
-        <h2>Leaderboard</h2>
-        <Link to='/'>Home</Link>
+        
       </div>
-    )
+    );
   }
 }
 
-export default Leaderboard
+export default Leaderboard;

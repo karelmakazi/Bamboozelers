@@ -116,6 +116,9 @@ class Quiz extends React.Component {
     const previousScore = this.state.previous
     const color = this.categoryFormatting(categorySelected)
     const scoreBody = 'Previous Score: ' + previousScore
+    let linkDirection = (previousScore >= currentScore) ? '/' : '/Leaderboard'
+    console.log('LINK: ' + linkDirection)
+    
     
     return (
       <div>
