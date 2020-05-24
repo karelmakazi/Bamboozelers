@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import request from 'superagent'
 import Question from './Question'
 import { addName } from '../api'
-import request from 'superagent'
 
 //SCORING
 
@@ -14,10 +14,9 @@ class Quiz extends React.Component {
     super(props)
     this.state = {
       score: 0,
+      previous: '',
       results: [],
-      backgroundColor: 'white',
       name:'',
-      previous: ''
     }
 
     this.questionResponseHandler = this.questionResponseHandler.bind(this)
@@ -82,6 +81,12 @@ class Quiz extends React.Component {
     addName(this.state)
   }
 
+  handleScoreSubmit(dispatch){
+    let prevScore = this.state.previous
+    let yourScore = this.state.score
+    dispatch (setScoreTransfer(prevScore, yourScore))
+  }
+
    //SCORING
   questionResponseHandler(response, currentScore){
      let nowScore = this.state.score
@@ -123,7 +128,8 @@ class Quiz extends React.Component {
           {scoreBody}
         </div>
         <h2 style={{color: color}}> {categorySelected}</h2>
-        <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {currentScore}</h3>
+        <h3> Your Score: {currentScore}</h3>
+        {/* <h3 style={{backgroundColor: this.state.backgroundColor}}> Your Score: {currentScore}</h3> */}
 
         {
           this.state.results.map((result, index) => {
