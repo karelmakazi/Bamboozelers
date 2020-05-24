@@ -13,13 +13,14 @@ class ScoreReport extends Component {
 
   render() {
     let {categorySelected, currentScore, previousScore} = this.props
+    let scoreFeedback = (currentScore > previousScore) ? 'You now have the highest score!' : 'You did not beat the highscore!'
     
 
     return (
       <div>
         <h1>SCORE: {categorySelected}</h1>
-        <h2>Your score was: {currentScore} </h2>
-        <h2>Old score was: {previousScore} </h2>
+        {scoreFeedback}
+        <h3>Your Score: {currentScore} High Score: {previousScore}</h3>
       </div>
     );
   }
