@@ -10,6 +10,8 @@ class ScoreReport extends Component {
     }
   }
 
+ 
+
 
   render() {
     let {categorySelected, currentScore, previousScore} = this.props
