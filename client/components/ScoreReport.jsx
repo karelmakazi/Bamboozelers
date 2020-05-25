@@ -14,8 +14,8 @@ class ScoreReport extends Component {
 
 
   render() {
-    let {categorySelected, currentScore, previousScore} = this.props
-    let scoreFeedback = (currentScore > previousScore) ? 'You now have the highest score!' : 'You did not beat the highscore!'
+    let {categorySelected, currentScore, previousScore, highName} = this.props
+    let scoreFeedback = (currentScore > previousScore) ? 'You beat ' + highName + "'s highscore!" : highName + "'s highscore still stands!"
     
 
     return (
@@ -33,6 +33,7 @@ function mapStateToProps (state) {
     categorySelected: state.quizDetail,
     currentScore: state.reportDetail[0].currentScore,
     previousScore: state.reportDetail[0].previousScore,
+    highName: state.reportDetail[0].highName
   }
 }
 

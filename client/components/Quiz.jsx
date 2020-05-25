@@ -18,6 +18,7 @@ class Quiz extends React.Component {
       previous: '',
       results: [],
       name:'',
+      highname:'',
     }
 
     this.questionResponseHandler = this.questionResponseHandler.bind(this)
@@ -44,7 +45,8 @@ class Quiz extends React.Component {
     request.get('/api/v1/score')
     .then(res => {
       this.setState({
-        previous: res.body[0].previous
+        previous: res.body[0].previous,
+        highname: res.body[0].name
       })
     })
   }
@@ -86,7 +88,8 @@ class Quiz extends React.Component {
   handleResultsSubmit(dispatch){
     let scoreCarrier = {
       previousScore: this.state.previous,
-      currentScore: this.state.score
+      currentScore: this.state.score,
+      highName: this.state.highname
       }
     dispatch (setScoreTransfer(scoreCarrier))
   }
@@ -124,8 +127,9 @@ class Quiz extends React.Component {
     const {dispatch} = this.props
     const currentScore = this.state.score
     const previousScore = this.state.previous
+    const highName = this.state.highname
     const color = this.categoryFormatting(categorySelected)
-    const scoreBody = 'Previous Score: ' + previousScore
+    const scoreBody = 'Previous Score: ' + previousScore + ' > ' + highName
       
     return (
       <div>

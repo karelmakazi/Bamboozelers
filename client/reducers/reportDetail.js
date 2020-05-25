@@ -5,7 +5,8 @@ function reportDetail (state = null, action){
       return [
         {
           previousScore: action.previousScore,
-          currentScore: action.currentScore
+          currentScore: action.currentScore,
+          highName: action.highName
         }
       ]
     default:

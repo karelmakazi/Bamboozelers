@@ -7,11 +7,10 @@ export const setQuizDetails = (category) => {
 
 export const setScoreTransfer = (scoreCarrier) => {
 
-  console.log(scoreCarrier);
-  
   return {
     type: 'SET_SCORE_TRANSFER',
     previousScore: scoreCarrier.previousScore,
-    currentScore: scoreCarrier.currentScore
+    currentScore: scoreCarrier.currentScore,
+    highName: scoreCarrier.highName
   }
 }

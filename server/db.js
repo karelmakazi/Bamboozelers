@@ -17,9 +17,9 @@ function addName(newName, db = connection){
 }
 
 //GET PREVIOUS SCORE
-function getScore (db = connection) {
+function getScore (categorySelected, db = connection) {
   return db('leaderboard')
-  .select('score as previous')
+  .select('score as previous', 'name')
   .where({category: 'Animals'})
   .then(results => {  
     return (results)
