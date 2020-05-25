@@ -41,10 +41,9 @@ class Quiz extends React.Component {
         })
       })
 
-    //CATEGORY PREVIOUS ATTEMPT  
+    //CATEGORY PREVIOUS SCORE
     let catRetrieval = `/api/v1/score/${categorySelected}`
-    console.log(catRetrieval)
-    
+     
     request.get(catRetrieval)
     .then(res => {
       this.setState({
@@ -52,13 +51,6 @@ class Quiz extends React.Component {
         highname: res.body[0].name
       })
     })
-    // request.get('/api/v1/score')
-    // .then(res => {
-    //   this.setState({
-    //     previous: res.body[0].previous,
-    //     highname: res.body[0].name
-    //   })
-    // })
   }
 
   //API CONSTRUCTORS
@@ -159,14 +151,6 @@ class Quiz extends React.Component {
             )
           })
         }
-
-        <div className='nameEntry'>
-          <label htmlFor='userName'>Name: </label>
-          <input id='userName' value={this.state.name} name='name' onChange={this.handleChange} />
-            <div onClick={this.handleSubmit}>
-              <button className='saveName'> Save </button>
-            </div>
-        </div>
         <Link to='/'>Home</Link>
         <Link to='/Score' onClick={() => this.handleResultsSubmit(dispatch)} >Proceed</Link>
       </div>
