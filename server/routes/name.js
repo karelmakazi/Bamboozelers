@@ -17,8 +17,9 @@ router.post('/name', (req, res) => {
 })
 
 //GET PREVIOUS SCORE
-router.get('/score', (req, res) => {
-  db.getScore()
+router.get('/score/:category', (req, res) => {
+  let categorySelected = req.params.category
+  db.getScore(categorySelected)
     .then(result => {
       res.json(result)
     })

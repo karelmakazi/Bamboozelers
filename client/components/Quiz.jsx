@@ -42,13 +42,23 @@ class Quiz extends React.Component {
       })
 
     //CATEGORY PREVIOUS ATTEMPT  
-    request.get('/api/v1/score')
+    let catRetrieval = `/api/v1/score/${categorySelected}`
+    console.log(catRetrieval)
+    
+    request.get(catRetrieval)
     .then(res => {
       this.setState({
         previous: res.body[0].previous,
         highname: res.body[0].name
       })
     })
+    // request.get('/api/v1/score')
+    // .then(res => {
+    //   this.setState({
+    //     previous: res.body[0].previous,
+    //     highname: res.body[0].name
+    //   })
+    // })
   }
 
   //API CONSTRUCTORS
