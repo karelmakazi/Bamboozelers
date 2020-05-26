@@ -8,6 +8,8 @@ class ScoreReport extends Component {
     super(props)
     this.state ={
       name:'',
+      categorySelected: this.props.categorySelected,
+      currentScore: this.props.currentScore,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,6 +24,8 @@ class ScoreReport extends Component {
 
    handleSubmit(event){
     event.preventDefault()
+    console.log('Name: ' + this.state.name + ' Cat: ' + this.state.categorySelected + ' Score: ' + this.state.currentScore)
+    
     addName(this.state)
   }
 

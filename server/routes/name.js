@@ -7,7 +7,8 @@ module.exports = router
 
 //POST /v1/name
 router.post('/name', (req, res) => {
-  db.addName(req.body.name)
+  db.addName(req.body)
+  // db.addName(req.body.name)
   .then(() => {
     res.status(201).send()
     })

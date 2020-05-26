@@ -111,9 +111,9 @@ class Quiz extends React.Component {
   categoryFormatting(category){
       switch (category){
         case 'Animals':
-          return 'orange'
-        case 'Films':
           return 'orangered'
+        case 'Films':
+          return 'orange'
         case 'Science':
           return 'cornflowerblue'
         case 'History':

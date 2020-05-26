@@ -10,9 +10,9 @@ function addName(newName, db = connection){
 
     return db('leaderboard')
   .insert({
-    name: newName,
-    category: 'test',
-    score: 13   
+    name: newName.name,
+    category: newName.categorySelected,
+    score: newName.currentScore   
   })
 }
 
